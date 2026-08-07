@@ -1,0 +1,5 @@
+# Pinned for IT7075: the Module 03 notebook uses the transformers 4.x
+# apply_chat_template contract (returns a tensor when return_tensors="pt").
+# transformers 5.x returns a BatchEncoding, which breaks the notebook as written.
+transformers<5
+mcp<2
