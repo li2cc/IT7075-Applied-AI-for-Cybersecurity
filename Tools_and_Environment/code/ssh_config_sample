@@ -1,0 +1,14 @@
+# Add this block to ~/.ssh/config on YOUR OWN laptop (not the VM).
+# Then "ssh it7075" connects and forwards every port the course needs.
+# Update HostName whenever the VM's public IP changes (it can change after unshelving).
+#
+# Ports:  8080 = Open WebUI   8888 = JupyterLab   55553 = Metasploit RPC
+#         13389 -> VM 3389 = remote desktop (optional graphical-desktop bonus)
+
+Host it7075
+    HostName <INSTANCE-IP>
+    User exouser
+    LocalForward 8080  localhost:8080
+    LocalForward 8888  localhost:8888
+    LocalForward 55553 localhost:55553
+    LocalForward 13389 localhost:3389

@@ -1,0 +1,19 @@
+# Core LangChain (v1.x) — chains, agents, tools
+langchain>=1.0.0
+langchain-core>=1.0.0
+
+# Model Context Protocol — the ONLY requirement for Mini-Project 5
+# (the project runs fully offline: simulated scans, a local KB, no LLM, no key)
+mcp>=1.0.0
+
+# LangChain/LangGraph integration — only for the Lecture 3 optional agent demo
+langchain-mcp-adapters>=0.1.0
+langgraph>=0.2.0
+
+# Offline retrieval for the RAG stage of the capstone
+sentence-transformers>=2.2.0
+numpy>=1.24.0
+
+# Live agent step (optional; only needed to call a real model)
+langchain-openai>=0.2.0
+openai>=1.3.0

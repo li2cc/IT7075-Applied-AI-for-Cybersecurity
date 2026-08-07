@@ -1,0 +1,25 @@
+# Module 8 — Cybersecurity Orchestration (Pen-Test)
+# Covers both part notebooks (code/part2_orchestration_simulated.ipynb,
+# code/part3_web_pentest_real.ipynb), the final project, and the MCP servers
+# (recon_server_simulated.py, recon_server_web.py).
+# Recon uses only the Python standard library (urllib/ssl); no external HTTP client needed.
+
+# Core LangChain (v1.x) — chains, agents, tools
+langchain>=1.0.0
+langchain-core>=1.0.0
+
+# Model Context Protocol + LangChain/LangGraph integration (Stage 3 live agent + servers)
+mcp>=1.0.0
+langchain-mcp-adapters>=0.1.0
+langgraph>=0.2.0
+
+# Offline retrieval for the RAG stage (embeddings + vector index)
+sentence-transformers>=2.2.0
+numpy>=1.24.0
+
+# Live agent step (optional; only needed to call a real model)
+langchain-openai>=0.2.0
+openai>=1.3.0
+
+# Loads OPENAI_API_KEY / ANTHROPIC_API_KEY from a repo-root .env
+python-dotenv>=1.0.0

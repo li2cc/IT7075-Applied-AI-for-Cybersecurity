@@ -1,0 +1,13 @@
+# secrets — never commit real keys
+.env
+*/.env
+**/.env
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# local vector stores / caches produced when notebooks run
+chroma/
+.chroma/
+*.sqlite3
+.cache/

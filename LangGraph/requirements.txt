@@ -1,0 +1,10 @@
+# LangGraph
+# Lecture 2 & 3 notebooks + Mini-Project 4.
+# Mini-Project 4 needs nothing but langgraph: every node is plain Python, so the
+# whole project runs offline with no API key, no model download, and no GPU.
+langgraph>=1.0.0
+
+# Optional — only for the guarded LLM calls in the lecture notebooks
+langchain-openai>=0.2.0
+openai>=1.3.0
+python-dotenv>=1.0.0

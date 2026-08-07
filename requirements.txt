@@ -1,0 +1,8 @@
+# Aggregate install for the whole course, run on the Jetstream A100 VM.
+# If versions conflict across modules, install per module instead (one venv each).
+-r Introduction_to_AI/code/requirements.txt
+-r RAG/requirements.txt
+-r LangChain/requirements.txt
+-r LangGraph/requirements.txt
+-r MCP/requirements.txt
+-r Cybersecurity_Orchestration/requirements.txt
