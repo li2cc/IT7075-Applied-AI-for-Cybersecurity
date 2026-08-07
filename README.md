@@ -6,14 +6,17 @@ pushed back with those outputs saved.
 
 ## Modules, in course order
 
-1. `Introduction_to_AI`
-2. `Tools_and_Environment`
-3. `LLMs_Local_and_Cloud`
-4. `RAG`
-5. `LangChain`
-6. `LangGraph`
-7. `MCP`
-8. `Cybersecurity_Orchestration`
+1. `01_Introduction_to_AI`
+2. `02_Tools_and_Environment`
+3. `03_LLMs_Local_and_Cloud`
+4. `04_RAG`
+5. `05_LangChain`
+6. `06_LangGraph`
+7. `07_MCP`
+8. `08_Cybersecurity_Orchestration`
+
+The folders are numbered so they sort in course order. Each module also has a `slides/`
+folder with the lecture deck as `.pptx` and `.pdf`.
 
 Each module holds its lecture code under `code/` (or, for
 `Cybersecurity_Orchestration`, at the module root), a `requirements.txt` where one
@@ -23,9 +26,9 @@ is needed, and the project starter and data under `assignments/project/`.
 
 **Complete, run these to generate outputs:**
 
-- every lecture notebook under `*/code/` (for example `RAG/code/rag_pipeline.ipynb`,
-  `LangChain/code/langchain_basics.ipynb`, `MCP/code/mcp_build_server.ipynb`);
-- `Cybersecurity_Orchestration/part2_orchestration_simulated.ipynb` and
+- every lecture notebook under `*/code/` (for example `04_RAG/code/rag_pipeline.ipynb`,
+  `05_LangChain/code/langchain_basics.ipynb`, `07_MCP/code/mcp_build_server.ipynb`);
+- `08_Cybersecurity_Orchestration/part2_orchestration_simulated.ipynb` and
   `part3_web_pentest_real.ipynb`.
 
 **Templates, do not expect these to run top to bottom:** the four
@@ -42,7 +45,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # if module versions conflict in a single environment, install per module instead:
-#   pip install -r RAG/requirements.txt        # etc.
+#   pip install -r 04_RAG/requirements.txt        # etc.
 ```
 
 Most lecture notebooks run offline on a small local embedding model and need no API
