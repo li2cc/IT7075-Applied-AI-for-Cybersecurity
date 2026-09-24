@@ -58,7 +58,7 @@
 drive.mount(&quot;/content/drive&quot;)
 !git clone https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git /content/drive/MyDrive/IT7075</pre>
 
-  <ol start="3" style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">In Google Drive, go to <strong>My Drive → IT7075 → 04_RAG → assignments → project</strong>, right-click <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">MiniProject_RAG_Starter.ipynb</code>, and choose <strong>Open with → Google Colaboratory</strong>.</li><li style="margin:5px 0;">Add the setup cell from step 5 as the first cell, and run it.</li></ol>
+  <ol start="3" style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">In Google Drive, go to <strong>My Drive → IT7075 → 04_RAG → assignments → project</strong>, right-click <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">MiniProject_RAG_Starter.ipynb</code>, and choose <strong>Open with → Google Colaboratory</strong>.</li><li style="margin:5px 0;">Run the <strong>Part 0 — Setup</strong> cell at the top of the notebook (step 5).</li></ol>
 
   <div style="background:#F3F5F7;border-left:5px solid #A3122A;padding:10px 14px;margin:12px 0;"><p style="margin:0 0 4px 0;font-weight:700;">Why not open the notebook straight from GitHub?</p><p style="margin:0;">Colab&#x27;s <strong>Open notebook → GitHub</strong> loads the notebook but none of the files next to it, and starts in <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">/content</code> instead of the notebook&#x27;s folder. That combination is what causes the path errors. Colab also forgets installed packages whenever the session ends, so the setup cell reinstalls them and moves into the right folder every time you run it.</p></div>
 
@@ -121,9 +121,9 @@ pip install -r requirements.txt</pre>
 
   <p style="margin:10px 0;">Red messages from &quot;pip&#x27;s dependency resolver&quot; about other Colab packages are normal. If Colab asks you to restart the session, do so, then run the setup cell again.</p>
 
-  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">5. Add the setup cell</h2>
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">5. Run the setup cell</h2>
 
-  <p style="margin:10px 0;">Paste this in as the <strong>first cell</strong> of the notebook (select the top cell, then <strong>Insert → Code cell</strong> above it) and run it every time you open the notebook. On Colab it mounts your Drive, installs the packages, moves into the notebook&#x27;s folder, and reads your API key from Colab Secrets. On Jetstream2 or your own computer it reads your key from <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.env</code>. In every environment, it then checks that the notebook can find its files.</p>
+  <p style="margin:10px 0;">The notebook starts with this cell, under <strong>Part 0 — Setup</strong>. Run it every time you open the notebook. On Colab it mounts your Drive, installs the packages, moves into the notebook&#x27;s folder, and reads your API key from Colab Secrets. On Jetstream2 or your own computer it reads your key from <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.env</code>. In every environment, it then checks that the notebook can find its files.</p>
 
   <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;"># ---- Setup: run this cell first, every time you open the notebook ----
 import os, sys, subprocess
