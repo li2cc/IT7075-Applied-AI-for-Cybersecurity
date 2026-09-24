@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course Notebook Setup</title>
+<style>
+  @page { size: letter; margin: 0.6in; }
+  body { margin: 0; padding: 24px 16px; background: #FFFFFF; }
+  tr { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+</style>
+</head>
+<body>
+<!-- BEGIN CANVAS FRAGMENT: everything between these comments pastes into the Canvas HTML editor -->
+<div style="max-width:900px;margin:0 auto;color:#10161D;font-family:'Segoe UI',Helvetica,Arial,sans-serif;font-size:11.5pt;line-height:1.45;">
+
+  <div style="background:#0D1B2A;color:#FFFFFF;padding:16px 20px;border-radius:6px;"><h1 style="margin:0 0 6px 0;font-size:22pt;line-height:1.2;color:#FFFFFF;">Getting Started with the Course Notebooks</h1><p style="margin:0;font-size:11.5pt;color:#E6EBF1;">Module 04: Retrieval-Augmented Generation (RAG) · Clone the repository, open the notebook, and install every package on Google Colab, Jetstream2, or your own computer.</p></div>
+
+  <p style="margin:10px 0;">Every notebook in this course lives in one GitHub repository. To run one you need three things: a copy of the repository, a place to run the notebook, and the Python packages it imports. This guide covers all three. It also covers the one check that prevents the most common problem: a notebook that cannot find its files.</p>
+
+  <table style="width:100%;border-collapse:collapse;margin:16px 0 8px 0;"><caption style="text-align:left;font-weight:700;padding:0 0 6px 0;color:#10161D;">Module 04 at a glance</caption><tbody><tr><th scope="row" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;width:24%;">Notebook</th><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;background:#F3F5F7;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/assignments/project/MiniProject_RAG_Starter.ipynb</code></td></tr><tr><th scope="row" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;width:24%;">Package list</th><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;background:#F3F5F7;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/requirements.txt</code></td></tr><tr><th scope="row" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;width:24%;">Files it reads</th><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;background:#F3F5F7;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/code/ssrf.txt</code><br><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/code/cybersecurity_kb.md</code><br><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/assignments/project/baseline_goldset.json</code></td></tr><tr><th scope="row" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;width:24%;">API key</th><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;background:#F3F5F7;">Optional. Without one, the generate step prints an offline answer and everything else runs normally.</td></tr><tr><th scope="row" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;width:24%;">GPU</th><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;background:#F3F5F7;">Not needed. The notebook runs on the CPU.</td></tr></tbody></table>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">1. Pick where you will work</h2>
+
+  <table style="width:100%;border-collapse:collapse;margin:8px 0;"><thead><tr><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">Where</th><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">Good for</th><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">You need</th></tr></thead><tbody><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><strong>Google Colab</strong></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Starting quickly, with nothing to install on your computer</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">A Google account</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><strong>Jetstream2 VM</strong></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Every module, including the GPU work in Module 03</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Your VM login (see the VM Access Guide)</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><strong>Your own computer</strong></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Working offline in your own editor</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Python 3.10 to 3.12, and Git</td></tr></tbody></table>
+
+  <p style="margin:10px 0;">Pick one and follow its part of step 3. The notebook and your code are the same everywhere, so you can switch later.</p>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">2. Know the repository layout</h2>
+
+  <p style="margin:10px 0;">The course repository is <a href="https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity" style="color:#0B4F8A;">github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity</a>. It is public, and you can clone it (make your own copy) but not push to it. Your submission goes in your own private repository (step 7). After cloning you will have this:</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">IT7075/                                  &lt;- the repository (your .env goes here)
+├── requirements.txt                     &lt;- every package for the whole course
+├── .pip-constraints.txt                 &lt;- version pins, applied automatically
+├── 01_Introduction_to_AI/ ... 08_Cybersecurity_Orchestration/
+└── 04_RAG/
+    ├── requirements.txt                 &lt;- this module&#x27;s packages
+    ├── code/
+    │   ├── ssrf.txt
+    │   └── cybersecurity_kb.md
+    └── assignments/project/
+        ├── MiniProject_RAG_Starter.ipynb     &lt;- run it from this folder
+        └── baseline_goldset.json</pre>
+
+  <p style="margin:10px 0;">The notebook finds its files by <strong>relative paths</strong>, starting from the notebook&#x27;s own folder. For example, <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">../../code/ssrf.txt</code> means &quot;go up two folders to <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG</code>, then into <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">code</code>&quot;. Keep this layout and run the notebook from its own folder, and every path works, whatever you call the top folder and wherever you put it.</p>
+
+  <div style="background:#F3F5F7;border-left:5px solid #A3122A;padding:10px 14px;margin:12px 0;"><p style="margin:0 0 4px 0;font-weight:700;">Keep the folders as they are</p><p style="margin:0;">Paths break when you move the notebook, rename a folder, or open the notebook on its own without the rest of the repository. Steps 3 and 5 make sure none of these happen.</p></div>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">3. Get the code and open the notebook</h2>
+
+  <h3 style="margin:16px 0 4px 0;font-size:12.5pt;color:#0D1B2A;">A. Google Colab</h3>
+
+  <ol style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">Go to <a href="https://colab.research.google.com" style="color:#0B4F8A;">colab.research.google.com</a> and choose <strong>File → New notebook</strong>. This blank notebook is only for the next command.</li><li style="margin:5px 0;">Paste this into a cell and run it once. It saves a copy of the repository in your Google Drive, so your work is still there when Colab shuts down. Allow access to Drive when Colab asks.</li></ol>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">from google.colab import drive
+drive.mount(&quot;/content/drive&quot;)
+!git clone https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git /content/drive/MyDrive/IT7075</pre>
+
+  <ol start="3" style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">In Google Drive, go to <strong>My Drive → IT7075 → 04_RAG → assignments → project</strong>, right-click <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">MiniProject_RAG_Starter.ipynb</code>, and choose <strong>Open with → Google Colaboratory</strong>.</li><li style="margin:5px 0;">Add the setup cell from step 5 as the first cell, and run it.</li></ol>
+
+  <div style="background:#F3F5F7;border-left:5px solid #A3122A;padding:10px 14px;margin:12px 0;"><p style="margin:0 0 4px 0;font-weight:700;">Why not open the notebook straight from GitHub?</p><p style="margin:0;">Colab&#x27;s <strong>Open notebook → GitHub</strong> loads the notebook but none of the files next to it, and starts in <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">/content</code> instead of the notebook&#x27;s folder. That combination is what causes the path errors. Colab also forgets installed packages whenever the session ends, so the setup cell reinstalls them and moves into the right folder every time you run it.</p></div>
+
+  <h3 style="margin:16px 0 4px 0;font-size:12.5pt;color:#0D1B2A;">B. Jetstream2 VM</h3>
+
+  <p style="margin:10px 0;">Open a terminal on your VM, either on the desktop (see the VM Access Guide) or with <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">ssh exouser@&lt;your-VM-IP&gt;</code>. Then run:</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">cd ~
+git clone https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git IT7075
+cd IT7075
+python3 -m venv .venv
+source .venv/bin/activate</pre>
+
+  <p style="margin:10px 0;">Install the packages (step 4), then open the notebook in one of these three ways:</p>
+
+  <ul style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;"><strong>VS Code with Remote-SSH</strong> (set up in Module 02): connect to the VM, choose <strong>File → Open Folder → ~/IT7075</strong>, open <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">04_RAG/assignments/project/MiniProject_RAG_Starter.ipynb</code>, and pick the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> interpreter under <strong>Select Kernel</strong>.</li><li style="margin:5px 0;"><strong>JupyterLab on the VM desktop</strong>: in a desktop terminal, run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">source ~/IT7075/.venv/bin/activate &amp;&amp; jupyter lab ~/IT7075</code>. A browser opens on the VM.</li><li style="margin:5px 0;"><strong>JupyterLab through an SSH tunnel</strong>: on the VM, run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">jupyter lab --no-browser --port 8888</code>. On your computer, run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">ssh -N -L 8888:localhost:8888 exouser@&lt;your-VM-IP&gt;</code>, then open the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">http://localhost:8888/lab?token=...</code> link the VM printed.</li></ul>
+
+  <h3 style="margin:16px 0 4px 0;font-size:12.5pt;color:#0D1B2A;">C. Your own computer</h3>
+
+  <p style="margin:10px 0;">Install Python 3.10, 3.11 or 3.12 from <a href="https://www.python.org/downloads/" style="color:#0B4F8A;">python.org</a>, and Git from <a href="https://git-scm.com/downloads" style="color:#0B4F8A;">git-scm.com</a>. Then, in a terminal:</p>
+
+  <p style="margin:12px 0 2px 0;font-weight:600;">macOS or Linux</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">git clone https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git IT7075
+cd IT7075
+python3 -m venv .venv
+source .venv/bin/activate</pre>
+
+  <p style="margin:12px 0 2px 0;font-weight:600;">Windows (PowerShell)</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">git clone https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git IT7075
+cd IT7075
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1</pre>
+
+  <p style="margin:10px 0;">Install the packages (step 4), then open the notebook in VS Code (<strong>Select Kernel → .venv</strong>) or run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">jupyter lab</code> from the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075</code> folder.</p>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">4. Install all the packages at once</h2>
+
+  <p style="margin:10px 0;">Each module has a <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">requirements.txt</code> that lists its packages, and the one in the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075</code> folder includes them all. Install from these files, not package by package. They also hold the version limits the notebooks were tested with, so a new release that changes an API cannot break your notebook.</p>
+
+  <h3 style="margin:16px 0 4px 0;font-size:12.5pt;color:#0D1B2A;">Jetstream2 and your own computer: the whole course, once</h3>
+
+  <p style="margin:10px 0;">With your <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> active, in the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075</code> folder, run:</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">pip install --upgrade pip
+# Jetstream2 only (see the box below):
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt</pre>
+
+  <p style="margin:10px 0;">That installs everything for the whole semester, so later modules need no more setup. It takes 10 to 15 minutes and about 7 GB of disk. When you <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git pull</code> course updates, run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">pip install -r requirements.txt</code> again in case the list changed.</p>
+
+  <div style="background:#F3F5F7;border-left:5px solid #A3122A;padding:10px 14px;margin:12px 0;"><p style="margin:0 0 4px 0;font-weight:700;">Jetstream2: do not skip the torch line</p><p style="margin:0;">The default PyTorch build needs a newer NVIDIA driver than the class VMs have. Without the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">cu121</code> line, PyTorch installs but cannot see the GPU (<code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">torch.cuda.is_available()</code> returns <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">False</code>). On your own computer, <strong>leave that line out</strong>: the default build suits most computers. If yours has an NVIDIA GPU, <a href="https://pytorch.org/get-started/locally/" style="color:#0B4F8A;">pytorch.org</a> gives the right command.</p></div>
+
+  <h3 style="margin:16px 0 4px 0;font-size:12.5pt;color:#0D1B2A;">Google Colab: this module, every session</h3>
+
+  <p style="margin:10px 0;">Colab already has most of these packages, and it forgets anything you add when the session ends. So install only this module&#x27;s list, every session. The setup cell in step 5 does it for you, running the equivalent of:</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">!pip install -q -r /content/drive/MyDrive/IT7075/04_RAG/requirements.txt</pre>
+
+  <p style="margin:10px 0;">Red messages from &quot;pip&#x27;s dependency resolver&quot; about other Colab packages are normal. If Colab asks you to restart the session, do so, then run the setup cell again.</p>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">5. Add the setup cell</h2>
+
+  <p style="margin:10px 0;">Paste this in as the <strong>first cell</strong> of the notebook (select the top cell, then <strong>Insert → Code cell</strong> above it) and run it every time you open the notebook. On Colab it mounts your Drive, installs the packages, moves into the notebook&#x27;s folder, and reads your API key from Colab Secrets. On Jetstream2 or your own computer it reads your key from <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.env</code>. In every environment, it then checks that the notebook can find its files.</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;"># ---- Setup: run this cell first, every time you open the notebook ----
+import os, sys, subprocess
+
+# The three settings that change from module to module:
+# 1. this module&#x27;s package list, inside the repository
+MODULE_REQS = &quot;04_RAG/requirements.txt&quot;
+# 2. (Colab only) the Drive folder this notebook is in
+COLAB_FOLDER = &quot;/content/drive/MyDrive/IT7075/04_RAG/assignments/project&quot;
+# 3. files the notebook reads, as seen from its own folder
+NEEDED = [
+    &quot;../../code/ssrf.txt&quot;,
+    &quot;../../code/cybersecurity_kb.md&quot;,
+    &quot;baseline_goldset.json&quot;,
+]
+
+REPO_URL = &quot;https://github.com/li2cc/IT7075-Applied-AI-for-Cybersecurity.git&quot;
+REPO = &quot;/content/drive/MyDrive/IT7075&quot;  # Colab&#x27;s copy of the repository
+
+if &quot;google.colab&quot; in sys.modules:
+    from google.colab import drive, userdata
+    drive.mount(&quot;/content/drive&quot;)
+    if not os.path.isdir(REPO):
+        subprocess.run([&quot;git&quot;, &quot;clone&quot;, &quot;-q&quot;, REPO_URL, REPO], check=True)
+    subprocess.run([sys.executable, &quot;-m&quot;, &quot;pip&quot;, &quot;install&quot;, &quot;-q&quot;,
+                    &quot;-r&quot;, os.path.join(REPO, MODULE_REQS),
+                    &quot;-c&quot;, os.path.join(REPO, &quot;.pip-constraints.txt&quot;)],
+                   check=True)
+    os.chdir(COLAB_FOLDER)
+    try:
+        os.environ[&quot;OPENAI_API_KEY&quot;] = userdata.get(&quot;OPENAI_API_KEY&quot;)
+    except Exception:
+        print(&quot;No OPENAI_API_KEY in Colab Secrets (fine if not needed).&quot;)
+else:
+    # Jetstream2 or your own computer: packages are in .venv (step 4).
+    # Read the API key from the .env file in your IT7075 folder, if any.
+    try:
+        from dotenv import load_dotenv, find_dotenv
+        load_dotenv(find_dotenv(usecwd=True))
+    except ImportError:
+        pass
+
+print(&quot;Working folder:&quot;, os.getcwd())
+missing = [f for f in NEEDED if not os.path.exists(f)]
+if missing:
+    raise FileNotFoundError(f&quot;Not found from this folder: {missing}. &quot;
+                            &quot;See step 6 of the setup guide.&quot;)
+print(&quot;All course files found. You are ready to go.&quot;)</pre>
+
+  <p style="margin:10px 0;">It should end with <strong>All course files found. You are ready to go.</strong> If it raises <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">FileNotFoundError</code>, go to step 6.</p>
+
+  <div style="background:#F3F5F7;border-left:5px solid #A3122A;padding:10px 14px;margin:12px 0;"><p style="margin:0 0 4px 0;font-weight:700;">API keys</p><p style="margin:0;">Never type a key into a notebook cell: saved outputs and GitHub history keep it. <strong>On Colab</strong>, click the key icon in the left sidebar, add a secret named <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">OPENAI_API_KEY</code>, and turn on <strong>Notebook access</strong>. <strong>Elsewhere</strong>, put the line <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">OPENAI_API_KEY=sk-...</code> in a file named <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.env</code> in the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075</code> folder. The repository&#x27;s <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.gitignore</code> keeps <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.env</code> out of Git.</p></div>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">6. Check your paths</h2>
+
+  <p style="margin:10px 0;">If the setup cell reports missing files, or a later cell raises <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">FileNotFoundError</code>, the notebook is running from the wrong folder. Look at the <strong>Working folder</strong> line the setup cell printed:</p>
+
+  <table style="width:100%;border-collapse:collapse;margin:8px 0;"><thead><tr><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">Working folder printed</th><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">What it means</th></tr></thead><tbody><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.../IT7075/04_RAG/assignments/project</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">The folder is right, so a file is missing. Run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git status</code> in the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075</code> folder to see whether one was deleted or moved, or clone the repository again.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">/content</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Colab, with a notebook opened from GitHub or uploaded on its own. Open it from Drive (step 3A) and run the setup cell.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Anywhere else</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">You are running a moved or downloaded copy of the notebook. Open the one inside <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">IT7075/04_RAG/assignments/project</code>.</td></tr></tbody></table>
+
+  <p style="margin:10px 0;">To see exactly what the notebook sees, run this in a cell:</p>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">import os
+print(os.getcwd())
+print(os.listdir(&quot;.&quot;))</pre>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">7. Submit from your own private repository</h2>
+
+  <p style="margin:10px 0;">The project brief asks for a <strong>private</strong> GitHub repository, with your instructor and the TA added as collaborators, that holds your work in a <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">rag_project/</code> folder. <strong>Do not fork the course repository</strong>: a fork of a public repository is public, so everyone could see your work.</p>
+
+  <ol style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">On GitHub, click <strong>New repository</strong>, choose <strong>Private</strong>, and tick <strong>Add a README</strong>. Then open <strong>Settings → Collaborators</strong> and add your instructor and the TA.</li><li style="margin:5px 0;">In that repository, make a <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">rag_project/</code> folder. Copy your finished notebook into it as <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">rag_notebook.ipynb</code>, and copy the three practice files next to it: <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">ssrf.txt</code>, <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">cybersecurity_kb.md</code> and <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">baseline_goldset.json</code>. Add your <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">my_kb/</code> folder, <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">goldset.json</code>, <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">results.csv</code> and your chart.</li><li style="margin:5px 0;">The practice files now sit beside the notebook instead of two folders up, so change two lines. In Part 1, replace the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">COURSE_KB = ...</code> line with the one below. In the setup cell, set <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">NEEDED</code> to the three file names, and on Colab point <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">COLAB_FOLDER</code> at your <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">rag_project</code> folder in Drive. <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">baseline_goldset.json</code> needs no change: the notebook already looks for it beside itself.</li></ol>
+
+  <pre style="background:#F3F5F7;color:#10161D;border-left:5px solid #0D1B2A;padding:10px 14px;margin:8px 0;font-family:Consolas,'Courier New',monospace;font-size:9.5pt;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">COURSE_KB = [&quot;ssrf.txt&quot;, &quot;cybersecurity_kb.md&quot;]
+# in the setup cell:
+NEEDED = [&quot;ssrf.txt&quot;, &quot;cybersecurity_kb.md&quot;, &quot;baseline_goldset.json&quot;]</pre>
+
+  <ol start="4" style="margin:8px 0;padding-left:26px;"><li style="margin:5px 0;">Choose <strong>Restart and run all</strong>, check that every cell ran, save the notebook, and commit and push it with its outputs. From Colab, the easiest way is <strong>File → Download → Download .ipynb</strong>, then <strong>Add file → Upload files</strong> on your repository&#x27;s GitHub page.</li></ol>
+
+  <h2 style="margin:26px 0 6px 0;font-size:15pt;color:#10161D;border-bottom:3px solid #A3122A;padding-bottom:5px;">8. When something goes wrong</h2>
+
+  <table style="width:100%;border-collapse:collapse;margin:8px 0;"><thead><tr><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">You see</th><th scope="col" style="text-align:left;vertical-align:top;padding:6px 10px;background:#0D1B2A;color:#FFFFFF;border:1px solid #0D1B2A;font-weight:600;">Do this</th></tr></thead><tbody><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">ModuleNotFoundError: No module named &#x27;chromadb&#x27;</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">The packages are not in the Python the notebook is using. On Colab, run the setup cell (each new session starts empty). In VS Code or Jupyter, choose the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> kernel, or activate <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> before starting <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">jupyter lab</code>.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">FileNotFoundError: ... ssrf.txt</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">The notebook is in the wrong folder. See step 6.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">NameError: name &#x27;____&#x27; is not defined</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Not a setup problem. A TODO blank is still waiting for your code.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">fatal: destination path &#x27;IT7075&#x27; already exists</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">You have already cloned it. To get course updates, <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">cd IT7075</code> and then <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git pull</code>.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git pull</code> says your local changes would be overwritten</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">You edited a file that the instructor has since updated. Run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git stash</code>, then <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git pull</code>, then <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">git stash pop</code> to keep both versions.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">ensurepip is not available</code> when creating <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">On Jetstream2 or Ubuntu, run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">sudo apt install -y python3-venv</code>, then create the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> again.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">torch.cuda.is_available()</code> is <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">False</code> on Jetstream2</td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Run the <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">cu121</code> torch command from step 4 again.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">No space left on device</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;"><code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">df -h ~</code> shows how much space is free, and <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">pip cache purge</code> clears pip&#x27;s download cache.</td></tr><tr><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Windows: <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">running scripts is disabled on this system</code></td><td style="text-align:left;vertical-align:top;padding:6px 10px;border:1px solid #C9D2DC;">Run <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> once, then activate <code style="background:#E8ECF0;color:#10161D;padding:1px 5px;border-radius:3px;font-family:Consolas,'Courier New',monospace;font-size:10pt;">.venv</code> again.</td></tr></tbody></table>
+
+  <p style="margin:28px 0 0 0;padding-top:8px;border-top:1px solid #C9D2DC;font-size:9.5pt;color:#3D4753;">IT7075: Applied AI for Cybersecurity · University of Cincinnati, School of Information Technology</p>
+
+</div>
+<!-- END CANVAS FRAGMENT -->
+</body>
+</html>
