@@ -1,0 +1,14 @@
+# LLMs on Local & Cloud
+# host_LLM_GPU.ipynb runs a Hugging Face model on a GPU (Colab T4 or Jetstream A100).
+# On Jetstream, install the CUDA 12.1 build of torch first (see the root requirements.txt).
+torch>=2.1
+transformers>=4.40,<5          # 5.x changed apply_chat_template(return_tensors="pt")
+accelerate>=0.30
+bitsandbytes>=0.43; sys_platform != "darwin"   # 4-bit loading needs an NVIDIA GPU
+huggingface_hub>=0.23
+flask>=3.0                     # the small local API server in the notebook
+openai>=1.3.0                  # the OpenAI-compatible client
+
+# llm_compare.ipynb talks to Ollama over HTTP.
+# Ollama itself is not a pip package: install it from https://ollama.com
+requests>=2.31

@@ -1,6 +1,24 @@
-# Aggregate install for the whole course, run on the Jetstream A100 VM.
-# If versions conflict across modules, install per module instead (one venv each).
+# Every package the IT7075 notebooks need, in one install. Run from the repository root.
+#
+#   Jetstream2, or any Linux machine with an NVIDIA GPU: install PyTorch for CUDA 12.1 first,
+#   because the default build needs a newer NVIDIA driver than the VM has:
+#       pip install torch --index-url https://download.pytorch.org/whl/cu121
+#   Then:
+#       pip install -r requirements.txt
+#
+#   Google Colab already has most of these. Install one module at a time instead:
+#       pip install -r 04_RAG/requirements.txt
+#
+# Version pins that apply to every module (transformers 5 and mcp 2 changed APIs the notebooks use):
+-c .pip-constraints.txt
+
+# Jupyter, for running the notebooks outside Colab
+jupyterlab>=4.0
+ipykernel>=6.0
+
 -r 01_Introduction_to_AI/code/requirements.txt
+# 02_Tools_and_Environment needs only python-dotenv and openai, which Module 01 installs.
+-r 03_LLMs_Local_and_Cloud/requirements.txt
 -r 04_RAG/requirements.txt
 -r 05_LangChain/requirements.txt
 -r 06_LangGraph/requirements.txt
